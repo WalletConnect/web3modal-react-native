@@ -1,10 +1,10 @@
-import type { IUniversalProvider } from '@walletconnect/universal-provider';
 import type { ethers } from 'ethers';
+import type { IProvider } from './coreTypes';
 
 // -- ClientCtrl ------------------------------------------- //
 export interface ClientCtrlState {
   initialized: boolean;
-  provider?: IUniversalProvider;
+  provider?: IProvider;
   web3Provider?: ethers.providers.Web3Provider;
   sessionTopic?: string;
 }
@@ -23,6 +23,9 @@ export interface ModalCtrlState {
 // -- OptionsCtrl --------------------------------------- //
 export interface OptionsCtrlState {
   isDataLoaded: boolean;
+  namespace: string;
+  selectedChain?: string;
+  chains?: string[];
 }
 
 // -- AccountCtrl --------------------------------------- //
@@ -87,7 +90,8 @@ export type RouterView =
   | 'ConnectWallet'
   | 'Qrcode'
   | 'WalletExplorer'
-  | 'Account';
+  | 'Account'
+  | 'NetworkSwitch';
 
 export interface RouterCtrlState {
   history: RouterView[];

@@ -11,6 +11,7 @@ import type { IProviderMetadata } from '../types/coreTypes';
 import { createUniversalProvider } from '../utils/ProviderUtil';
 import { removeDeepLinkWallet } from '../utils/StorageUtil';
 import { ThemeCtrl } from '../controllers/ThemeCtrl';
+import { CoreUtil } from '../utils/CoreUtil';
 
 interface Props {
   projectId: string;
@@ -102,10 +103,21 @@ export function useConfigure({
           if (provider.session) {
             ClientCtrl.setSessionTopic(provider.session.topic);
             await AccountCtrl.getAccount();
+            const namespace = OptionsCtrl.getNamespace();
+            OptionsCtrl.setSelectedChain(
+              provider?.rpcProviders[namespace]?.getDefaultChain()
+            );
+            const chains = CoreUtil.getAvailableChains(
+              provider?.session?.namespaces[namespace]?.accounts
+            );
+            if (chains) {
+              OptionsCtrl.setChains(chains);
+            }
           }
           ClientCtrl.setInitialized(true);
         }
       } catch (error) {
+        console.log('error', error);
         Alert.alert('Error', 'Error initializing provider');
       }
     }

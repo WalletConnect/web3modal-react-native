@@ -9,10 +9,17 @@ import type { RouterProps } from 'src/types/routerTypes';
 import Web3Avatar from '../components/Web3Avatar';
 import ConnectionBadge from '../components/ConnectionBadge';
 import useTheme from '../hooks/useTheme';
+import Backward from '../assets/Backward';
+import Link from '../components/Link';
+import { RouterCtrl } from '../controllers/RouterCtrl';
 
 export function Account({ onCopyClipboard }: RouterProps) {
   const Theme = useTheme();
   const accountState = useSnapshot(AccountCtrl.state);
+
+  const onNetworkPress = () => {
+    RouterCtrl.push('NetworkSwitch');
+  };
 
   const onCopy = () => {
     if (onCopyClipboard && accountState.address) {
@@ -42,6 +49,19 @@ export function Account({ onCopyClipboard }: RouterProps) {
           </View>
           <ConnectionBadge />
         </View>
+        <View style={styles.footer}>
+          <Link
+            label="Network"
+            onPress={onNetworkPress}
+            icon={
+              <Backward
+                height={12}
+                fill={Theme.accent}
+                style={styles.networkIcon}
+              />
+            }
+          />
+        </View>
       </View>
     </>
   );
@@ -50,11 +70,14 @@ export function Account({ onCopyClipboard }: RouterProps) {
 const styles = StyleSheet.create({
   container: {
     justifyContent: 'space-between',
+    padding: 24,
   },
   header: {
-    padding: 24,
     flexDirection: 'row',
     justifyContent: 'space-between',
+  },
+  footer: {
+    alignItems: 'flex-end',
   },
   avatar: {
     height: 70,
@@ -73,5 +96,9 @@ const styles = StyleSheet.create({
   },
   row: {
     flexDirection: 'row',
+  },
+  networkIcon: {
+    marginLeft: 5,
+    transform: [{ rotateZ: '180deg' }],
   },
 });

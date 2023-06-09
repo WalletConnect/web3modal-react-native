@@ -8,6 +8,7 @@ import InitialExplorer from '../views/InitialExplorer';
 import { Account } from '../views/Account';
 import { Error } from '../views/Error';
 import { useOrientation } from '../hooks/useOrientation';
+import NetworkSwitch from '../views/NetworkSwitch';
 
 interface Props {
   onCopyClipboard?: (value: string) => void;
@@ -27,6 +28,8 @@ export function Web3ModalRouter(props: Props) {
         return QRCodeView;
       case 'Account':
         return Account;
+      case 'NetworkSwitch':
+        return NetworkSwitch;
       default:
         return Error;
     }

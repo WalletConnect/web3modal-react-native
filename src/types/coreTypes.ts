@@ -4,7 +4,10 @@ import type {
   IUniversalProvider,
 } from '@walletconnect/universal-provider';
 
-export type IProvider = IUniversalProvider;
+export interface IProvider extends IUniversalProvider {
+  //remove this when IUniversalProvider is updated
+  setDefaultChain: (chainId: string, rpcUrl?: string | undefined) => void;
+}
 
 export interface IProviderMetadata extends Metadata {
   redirect: {

@@ -1,4 +1,4 @@
-import { proxy } from 'valtio/vanilla';
+import { proxy } from 'valtio';
 import type { WcConnectionCtrlState } from '../types/controllerTypes';
 
 // -- initial state ------------------------------------------------ //

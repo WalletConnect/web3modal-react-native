@@ -35,4 +35,18 @@ export const CoreUtil = {
 
     return `${plainAppUrl}/wc?uri=${encodedWcUrl}`;
   },
+
+  getAvailableChains(accounts?: string[]): string[] {
+    if (!accounts) return [];
+
+    //TODO: check if all accounts come with the same format e.g. eip155:1:0x1234
+    const chains = accounts
+      .filter((account) => account.includes(':'))
+      .map((account) => {
+        const chain = account.split(':')[1];
+        return chain!;
+      });
+
+    return chains || [];
+  },
 };

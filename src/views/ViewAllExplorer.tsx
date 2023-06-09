@@ -10,7 +10,6 @@ import { useSnapshot } from 'valtio';
 
 import WalletItem, { ITEM_HEIGHT } from '../components/WalletItem';
 import NavHeader from '../components/NavHeader';
-import { RouterCtrl } from '../controllers/RouterCtrl';
 import { ExplorerCtrl } from '../controllers/ExplorerCtrl';
 import { OptionsCtrl } from '../controllers/OptionsCtrl';
 import { WcConnectionCtrl } from '../controllers/WcConnectionCtrl';
@@ -48,10 +47,7 @@ function ViewAllExplorer({
       }}
     >
       <>
-        <NavHeader
-          title="Connect your wallet"
-          onBackPress={RouterCtrl.goBack}
-        />
+        <NavHeader title="Connect your wallet" />
         {loading ? (
           <ActivityIndicator
             style={{ height: windowHeight * 0.6 }}

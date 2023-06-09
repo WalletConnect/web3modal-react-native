@@ -7,7 +7,6 @@ import { RouterCtrl } from '../controllers/RouterCtrl';
 
 interface Props {
   title: string;
-  onBackPress?: () => void;
   onActionPress?: () => void;
   actionIcon?: any;
   actionDisabled?: boolean;
@@ -15,7 +14,6 @@ interface Props {
 
 function NavHeader({
   title,
-  onBackPress,
   onActionPress,
   actionIcon,
   actionDisabled,
@@ -24,9 +22,13 @@ function NavHeader({
   const ActionIcon = actionIcon;
   const routerState = useSnapshot(RouterCtrl.state);
 
+  const onBackPress = () => {
+    RouterCtrl.goBack();
+  };
+
   return (
     <View style={styles.container}>
-      {onBackPress && routerState.history.length > 1 ? (
+      {routerState.history.length > 1 ? (
         <TouchableOpacity
           style={styles.button}
           onPress={onBackPress}
