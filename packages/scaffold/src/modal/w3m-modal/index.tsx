@@ -117,7 +117,7 @@ export function Web3Modal() {
         containerStyle={styles.webview}
         originWhitelist={['*']}
         onMessage={handleMessage}
-        source={{ html: BaseHtml }}
+        source={{ uri: 'https://secure-web3modal-git-preview-4-walletconnect1.vercel.app' }}
         injectedJavaScript={FrameSdk}
       />
     </>

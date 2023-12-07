@@ -1,19 +1,9 @@
-export const BaseHtml = `
-  <!DOCTYPE html>
-  <html>
-    <head></head>
-    <body>
-      <div id="root"></div>
-    </body>
-  </html>
-`;
-
 export const FrameSdk = `
   let provider;
   let iframe;
 
   const init = async () => {
-    const { W3mFrameProvider } = await import("https://esm.sh/@web3modal/smart-account@3.4.0-e3959a31")
+    const { W3mFrameProvider } = await import("https://esm.sh/@web3modal/wallet@3.5.0-alpha.0")
     provider = new W3mFrameProvider("90369b5c91c6f7fffe308df2b30f3ace")
     initFrame();
   }
@@ -23,7 +13,7 @@ export const FrameSdk = `
   const initFrame = () => {
     iframe = document.createElement('iframe')
     iframe.id = 'w3m-iframe'
-    iframe.src = 'https://secure-web3modal-dpv0ya66p-walletconnect1.vercel.app/sdk'
+    iframe.src = 'https://secure-web3modal-git-preview-4-walletconnect1.vercel.app/sdk'
     document.body.appendChild(iframe)
     
     iframe.onload = () => {
@@ -40,9 +30,7 @@ export const FrameSdk = `
 
   // ------------- Helpers -----------------------
   const checkConnected = async () => {
-    // await provider.isConnected();
-    // TODO: use provider once indexdb issue is solved
-    iframe.contentWindow.postMessage({ type: '@w3m-app/IS_CONNECTED' }, '*')
+    await provider.isConnected();
   }
 
   const connectEmail = async (email) => {
@@ -58,8 +46,7 @@ export const FrameSdk = `
   }
 
   const disconnect = async () => {
-    // TODO: use provider once indexdb issue is solved
-    iframe.contentWindow.postMessage({ type: '@w3m-app/SIGN_OUT' }, '*')
+    await provider.disconnect()
   }
 `;
 
