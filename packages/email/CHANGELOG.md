@@ -1,5 +1,14 @@
 # @web3modal/email-react-native
 
+## 2.0.5
+
+### Patch Changes
+
+- 38cebc3: fix: added secure frame timeout for email logins
+- Updated dependencies [38cebc3]
+  - @web3modal/core-react-native@2.0.5
+  - @web3modal/ui-react-native@2.0.5
+
 ## 2.0.4
 
 ### Patch Changes
