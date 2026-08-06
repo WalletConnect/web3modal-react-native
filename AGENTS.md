@@ -4,6 +4,8 @@
 
 Tech stack: React Native 0.72+ (example app on 0.76), TypeScript 5.2, Valtio, WalletConnect v2, ethers.js / wagmi, Solana Web3.js.
 
+Public (consumer-facing) documentation: https://docs.reown.com/appkit/react-native/core/installation — useful for checking the documented public API when changing SDK behavior.
+
 ## Monorepo Structure
 
 ```
