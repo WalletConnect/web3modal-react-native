@@ -75,6 +75,8 @@ yarn android          # Run example on Android emulator
 yarn build            # Build all packages
 ```
 
+Running the example app requires a Reown ProjectID: copy `apps/native/.env.example` to `apps/native/.env` and set `EXPO_PUBLIC_PROJECT_ID` (create one at https://dashboard.reown.com). Unit tests and builds need no environment setup.
+
 **Before pushing any solution, always run:**
 
 ```bash

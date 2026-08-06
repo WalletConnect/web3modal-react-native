@@ -8,7 +8,7 @@ Install dependencies from the repository's root directory (this will also set up
 yarn
 ```
 
-To create your ProjectID, head to [dashboard.reown.com](https://dashboard.reown.com/)
+To create your ProjectID, head to [dashboard.reown.com](https://dashboard.reown.com/). Then copy `apps/native/.env.example` to `apps/native/.env` and set `EXPO_PUBLIC_PROJECT_ID` to your ProjectID — the example app reads it from there.
 
 ## Commands
 
