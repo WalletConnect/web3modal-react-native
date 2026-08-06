@@ -99,7 +99,7 @@ Rules:
 - The SDK must work in both **Expo** and **React Native CLI** projects.
 - **Keep third-party dependencies minimal** — avoid new libraries; justify any that are absolutely necessary.
 - Conventional commits: `fix:`, `feat:`, `refactor:`, `docs:`, `test:`, `chore:`.
-- Changesets: a changeset must list **all published packages** (they are versioned together), not only the one you changed.
+- Changesets: a changeset must list **all published packages** (they are versioned together), not only the one you changed. Exception: `@reown/appkit-react-native-cli` is versioned separately — include it only when the CLI itself changes.
 
 ## Dependency Updates / Dependabot
 
