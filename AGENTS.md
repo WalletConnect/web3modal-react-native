@@ -83,6 +83,13 @@ yarn lint     # ESLint
 yarn test     # Jest
 ```
 
+### Testing changes
+
+- Unit tests live in each package's `src/__tests__/`. Run one package's tests with `yarn workspace @reown/appkit-<name>-react-native test` (faster than the root `yarn test`).
+- Jest mocks are shared via `jest-shared-setup.ts`, imported as `@shared-jest-setup` in each package's `jest-setup.ts` — read `TESTING.md` before adding mocks; put shared mocks there, package-specific ones in the package's `jest-setup.ts`.
+- New logic in controllers/utils/adapters should come with unit tests following the existing patterns in the package's `__tests__/` folder.
+- Manual verification: run the example app (`yarn ios` / `yarn android`) for SDK behavior, and `apps/gallery` (Storybook) for isolated UI component changes.
+
 Rules:
 
 - Follow existing code style; do not deviate from established patterns.
