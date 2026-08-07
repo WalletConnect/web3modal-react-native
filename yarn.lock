@@ -4474,6 +4474,16 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@reown/appkit-react-native-cli@workspace:packages/cli":
+  version: 0.0.0-use.local
+  resolution: "@reown/appkit-react-native-cli@workspace:packages/cli"
+  dependencies:
+    chalk: 5.4.1
+  bin:
+    appkit-react-native: lib/commonjs/index.js
+  languageName: unknown
+  linkType: soft
+
 "@reown/appkit-react-native@2.0.4, @reown/appkit-react-native@workspace:*, @reown/appkit-react-native@workspace:packages/appkit":
   version: 0.0.0-use.local
   resolution: "@reown/appkit-react-native@workspace:packages/appkit"
@@ -8330,6 +8340,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"chalk@npm:5.4.1, chalk@npm:^5.4.1":
+  version: 5.4.1
+  resolution: "chalk@npm:5.4.1"
+  checksum: 0c656f30b782fed4d99198825c0860158901f449a6b12b818b0aabad27ec970389e7e8767d0e00762175b23620c812e70c4fd92c0210e55fc2d993638b74e86e
+  languageName: node
+  linkType: hard
+
 "chalk@npm:^2.0.1, chalk@npm:^2.4.2":
   version: 2.4.2
   resolution: "chalk@npm:2.4.2"
@@ -8365,13 +8382,6 @@ __metadata:
   version: 5.6.2
   resolution: "chalk@npm:5.6.2"
   checksum: 4ee2d47a626d79ca27cb5299ecdcce840ef5755e287412536522344db0fc51ca0f6d6433202332c29e2288c6a90a2b31f3bd626bc8c14743b6b6ee28abd3b796
-  languageName: node
-  linkType: hard
-
-"chalk@npm:^5.4.1":
-  version: 5.4.1
-  resolution: "chalk@npm:5.4.1"
-  checksum: 0c656f30b782fed4d99198825c0860158901f449a6b12b818b0aabad27ec970389e7e8767d0e00762175b23620c812e70c4fd92c0210e55fc2d993638b74e86e
   languageName: node
   linkType: hard
 

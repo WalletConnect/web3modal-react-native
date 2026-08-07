@@ -91,83 +91,31 @@ To run tests for a specific package:
 yarn workspace @reown/appkit-[package-name]-react-native test
 ```
 
-## Playwright Testing
+## Playwright Testing (E2E)
 
-For end-to-end testing of web interfaces (such as the web demo or web views within the React Native app), we use Playwright.
+End-to-end tests run against the example app's web build (Expo web) using Playwright. They run in CI via `.github/workflows/e2e.yml`.
 
-### Setup
+### Structure
 
-1. Install Playwright:
+- Tests: `apps/native/tests/*.spec.ts` (shared helpers in `apps/native/tests/shared/`)
+- Config: `apps/native/playwright.config.ts`
 
-```bash
-# Install Playwright and browsers
-npx playwright install
-```
+### Running
 
-2. Playwright tests are located in the `e2e` directory at the root of the project.
-
-### Writing Tests
-
-Playwright tests are written using the Playwright Test framework. Here's a basic example:
-
-```typescript
-import { test, expect } from '@playwright/test';
-
-test('basic test', async ({ page }) => {
-  // Navigate to the page
-  await page.goto('https://your-app-url.com');
-
-  // Interact with the page
-  await page.click('text=Sign In');
-  await page.fill('input[name="email"]', 'user@example.com');
-  await page.fill('input[name="password"]', 'password');
-  await page.click('button[type="submit"]');
-
-  // Assert the result
-  await expect(page.locator('.welcome-message')).toContainText('Welcome');
-});
-```
-
-### Running Playwright Tests
-
-To run all Playwright tests:
+From the repo root:
 
 ```bash
-yarn playwright:test
+yarn playwright:test        # runs all e2e specs (via apps/native)
 ```
 
-To run a specific test file:
+Or from `apps/native`:
 
 ```bash
-yarn playwright:test tests/basic-tests.spec.ts
+yarn playwright:install                        # install the chromium browser (first time)
+yarn playwright test tests/wallet.spec.ts      # run a single spec
+yarn playwright test --debug                   # step through with the Playwright Inspector
 ```
 
-### Debugging Playwright Tests
-
-To debug tests:
-
-1. Run with the `--debug` flag:
-
-```bash
-yarn playwright:test --debug
-```
-
-2. Use the Playwright Inspector to step through the test.
-
-3. Add `await page.pause()` in your test to pause at a specific point.
-
-### Generating Test Reports
-
-To generate an HTML report:
-
-```bash
-yarn playwright:test --reporter=html
-```
-
-Then open the report:
-
-```bash
-yarn playwright:test show-report
-```
+An HTML report is written to `apps/native/playwright-report/`; open it with `yarn playwright show-report`.
 
 For more information, refer to the [Playwright documentation](https://playwright.dev/docs/intro).
