@@ -144,11 +144,18 @@ export const CoreHelperUtil = {
       safeAppUrl = `${safeAppUrl}/`;
     }
     const encodedWcUrl = encodeURIComponent(wcUri);
+    let redirect = `${safeAppUrl}wc?uri=${encodedWcUrl}`;
+
+    if (provider) {
+      redirect = `${redirect}&provider=${encodeURIComponent(provider)}`;
+      const projectId = OptionsController.state.projectId.trim();
+      if (projectId) {
+        redirect = `${redirect}&projectId=${encodeURIComponent(projectId)}`;
+      }
+    }
 
     return {
-      redirect: provider
-        ? `${safeAppUrl}wc?uri=${encodedWcUrl}&provider=${provider}`
-        : `${safeAppUrl}wc?uri=${encodedWcUrl}`,
+      redirect,
       href: safeAppUrl
     };
   },
