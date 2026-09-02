@@ -1,3 +1,5 @@
+import type { SocialProvider } from '@reown/appkit-common-react-native';
+
 import { CoreHelperUtil } from '../../utils/CoreHelperUtil';
 import { OptionsController } from '../../controllers/OptionsController';
 
@@ -22,6 +24,18 @@ describe('CoreHelperUtil', () => {
         `${WEB_WALLET_URL}/wc?uri=${ENCODED_WC_URI}&provider=google&projectId=test-project-id`
       );
       expect(href).toBe(`${WEB_WALLET_URL}/`);
+    });
+
+    it('should encode special characters in the provider and project id', () => {
+      OptionsController.setProjectId('proj+id=1&x');
+      const { redirect } = CoreHelperUtil.formatUniversalUrl(
+        WEB_WALLET_URL,
+        WC_URI,
+        'email+test' as SocialProvider
+      );
+      expect(redirect).toBe(
+        `${WEB_WALLET_URL}/wc?uri=${ENCODED_WC_URI}&provider=email%2Btest&projectId=proj%2Bid%3D1%26x`
+      );
     });
 
     it('should omit the project id when it is blank', () => {
